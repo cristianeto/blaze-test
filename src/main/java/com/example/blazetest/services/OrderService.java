@@ -1,6 +1,7 @@
 package com.example.blazetest.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.example.blazetest.models.Order;
 import com.example.blazetest.repositories.OrderRepository;
@@ -17,6 +18,10 @@ public class OrderService {
 
   public ArrayList<Order> getOrders(){
     return (ArrayList<Order>) orderRepository.findAll();
+  }
+
+  public Optional<Order> getById(Long id){
+    return orderRepository.findById(id);
   }
 
   public Order saveOrder(Order order){
