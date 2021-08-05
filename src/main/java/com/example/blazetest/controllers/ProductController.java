@@ -50,9 +50,9 @@ public class ProductController {
   public String deleteProductById(@PathVariable("id") Long id){
     boolean productDeleted = productService.deleteById(id);
     if(productDeleted) {
-      return "Product with id: " + id + " was deleted";
+      return "Product id: " + id + " was deleted";
     }else{
-      return "Product with id: " + id + " not was deleted";
+      return "Product id: " + id + " was not deleted!";
     }
   }
 }

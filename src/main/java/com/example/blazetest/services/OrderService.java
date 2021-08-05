@@ -38,4 +38,18 @@ public class OrderService {
     }
     return orderRepository.save(order);
   }
+
+  public boolean deleteById(Long id){
+    Optional<Order> orderOptional =orderRepository.findById(id);
+    try {     
+      if(orderOptional.isPresent()){
+        orderRepository.deleteById(id);
+        return true;
+      }else{
+        return false;
+      }
+    } catch (Exception e) {
+      return false;
+    }
+  }
 }
