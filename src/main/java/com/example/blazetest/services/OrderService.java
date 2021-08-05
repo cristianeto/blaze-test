@@ -36,6 +36,6 @@ public class OrderService {
     if(order.getId() == null){
       order.setId(sequenceGenerator.generateSequence(Order.SEQUENCE_NAME));
     }
-    return orderRepository.insert(order);
+    return orderRepository.save(order);
   }
 }
