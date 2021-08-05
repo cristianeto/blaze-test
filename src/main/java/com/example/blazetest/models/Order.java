@@ -1,9 +1,12 @@
 package com.example.blazetest.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "orders")
@@ -13,26 +16,27 @@ public class Order {
   public static final String SEQUENCE_NAME = "orders_sequence";
 
   @Id
-  private long id;
+  private Long id;
+  @Indexed(direction = IndexDirection.ASCENDING)
   private String status; 
   private Date createdAt; 
   private String customer;
-  private Product[] product; 
+  private List<Product> products; 
 
   public Order(){}
 
-  public Order(String status, Date createdAt, String customer, Product[] product) {
+  public Order(String status, Date createdAt, String customer, List<Product> products) {
     this.status = status;
     this.createdAt = createdAt;
     this.customer = customer;
-    this.product = product;
+    this.products = products;
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -60,13 +64,21 @@ public class Order {
     this.customer = customer;
   }
 
-  public Product[] getProduct() {
-    return product;
+  public List<Product> getProducts() {
+    return products;
   }
 
-  public void setProduct(Product[] product) {
-    this.product = product;
+  public void setProducts(List<Product> products) {
+    this.products = products;
   }
 
-  
+/*   @Override
+  public String toString() {
+   StringBuilder builder = new StringBuilder();
+   builder.append("Order [id=").append(id).append(", status=").append(status).append(", createAt=")
+     .append(createdAt).append(", customer=")
+     .append(customer).append(", products=")
+     .append(products).append("]");
+   return builder.toString();
+  } */
 }
