@@ -37,9 +37,9 @@ public class ProductController {
   @GetMapping("/pageable")
   public Page<Product> retrieveProductWithPaging(@Param(value = "page") int page, 
                                               @Param(value = "size") int size){
-  Page<Product> products =productService.getProductsPageable(page, size);
-	return products;
-}
+    Page<Product> products =productService.getProductsPageable(page, size);
+    return products;
+  }
 
 /** This method allows to Add and Edit a Product*/
   @PostMapping()
