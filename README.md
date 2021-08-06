@@ -25,7 +25,7 @@ You **dont need** to pass an id with in Json body.
 
 You **must pass** an id with in Json body.
 
-`{ "name": "Galap", "category": "Cookies", "unitPrice": "1.00", "isActive": true }`
+`{ "id":"1", "name": "Galap", "category": "Cookies", "unitPrice": "1.00", "isActive": true }`
 
 ## API orders
 
