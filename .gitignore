@@ -1,5 +1,5 @@
 HELP.md
-src/main/resources/application.properties
+# src/main/resources/application.properties
 # OS generated files #
 ######################
 .DS_Store
