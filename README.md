@@ -2,6 +2,8 @@
 
 This is a test project to create and edit orders and products. An order includes a list of items. Each order item has a product and a quantity which will be used to calculate the order total amount.
 
+[BLAZE API](https://blazetest-cris.herokuapp.com/api/products/pageable?page=0&size=2)
+
 ## API products
 
 In order to create, edit, or list products you can find the nexts endpoints:
