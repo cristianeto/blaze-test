@@ -1,6 +1,7 @@
 package com.example.blazetest.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.example.blazetest.models.Order;
@@ -19,8 +20,8 @@ public class OrderService {
   @Autowired
   SequenceGeneratorService sequenceGenerator;
 
-  public ArrayList<Order> getOrders(){
-    return (ArrayList<Order>) orderRepository.findAll();
+  public List<Order> getOrders(){
+    return orderRepository.findAll();
   }
 
   public Optional<Order> getById(Long id){

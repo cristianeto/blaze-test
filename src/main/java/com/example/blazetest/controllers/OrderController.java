@@ -1,6 +1,7 @@
 package com.example.blazetest.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.example.blazetest.models.Order;
@@ -24,7 +25,7 @@ public class OrderController {
   OrderService orderService;
 
   @GetMapping()
-  public ArrayList<Order> getOrders(){
+  public List<Order> getOrders(){
     return orderService.getOrders();
   }
 
