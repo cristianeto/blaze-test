@@ -92,8 +92,7 @@ public class Order {
 
   public Double getCityTax(){    
     this.cityTax = Utils.RoundToTwoDecimalPlaces(this.subtotal * 0.1);
-    this.subtotalAux = this.subtotal + this.cityTax;
-    // this.cityTax =Utils.RoundToTwoDecimalPlaces(cityTax+ this.subtotal);
+    this.subtotalAux = this.subtotal + this.cityTax;    
     return this.cityTax;
   }
   
@@ -129,14 +128,4 @@ public class Order {
     this.total = Utils.RoundToTwoDecimalPlaces(this.total);
     return this.total;
   }
-
-/*   @Override
-  public String toString() {
-   StringBuilder builder = new StringBuilder();
-   builder.append("Order [id=").append(id).append(", status=").append(status).append(", createAt=")
-     .append(createdAt).append(", customer=")
-     .append(customer).append(", products=")
-     .append(products).append("]");
-   return builder.toString();
-  } */
 }

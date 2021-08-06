@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 public class Utils {
   static Utils utils;
 
-  public static Utils getInstanciaUtilidades() {
+  public static Utils getInstanceUtils() {
     if (utils == null) {
         utils = new Utils();
     }
