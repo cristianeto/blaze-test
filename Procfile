@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar target/blazetest-0.0.1-SNAPSHOT.jar
