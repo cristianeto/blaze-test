@@ -1,6 +1,5 @@
 package com.example.blazetest.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +36,8 @@ public class OrderService {
     if(order.getId() == null){
       order.setId(sequenceGenerator.generateSequence(Order.SEQUENCE_NAME));
     }
+    // System.out.println("Order Propducts: "+order.getProducts().size());   
+    //order.setProducts(Arrays.asList(order.getProducts().toArray());
     return orderRepository.save(order);
   }
 

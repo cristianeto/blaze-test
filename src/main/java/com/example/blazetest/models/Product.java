@@ -1,5 +1,8 @@
 package com.example.blazetest.models;
 
+import com.example.blazetest.utils.Utils;
+import com.mongodb.lang.NonNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,22 +11,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Product {
   @Transient
   public static final String SEQUENCE_NAME = "products_sequence";
-
+  
   @Id
   private Long id; 
+  @NonNull
   private String name;
   private String category;
+  @NonNull
   private Double unitPrice;
+  @NonNull
   private Boolean isActive;
+  @NonNull
+  private int quantity;
+  private Double cost;
 
   public Product(){}
   
-  public Product(String name, String category, Double unitPrice, Boolean isActive) {
+
+  public Product(String name, String category, Double unitPrice, Boolean isActive, int quantity, Double cost) {
     this.name = name;
     this.category = category;
     this.unitPrice = unitPrice;
     this.isActive = isActive;
+    this.quantity = quantity;
+    this.cost = cost;
   }
+
 
   public Long getId() {
     return id;
@@ -63,5 +76,21 @@ public class Product {
 
   public void setIsActive(Boolean isActive) {
     this.isActive = isActive;
+  }
+
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public Double getCost() {
+    return Utils.RoundToTwoDecimalPlaces((this.quantity * this.unitPrice));
+  }
+
+  public void setCost(Double cost) {
+    this.cost = cost;
   }
 }

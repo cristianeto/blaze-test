@@ -1,6 +1,5 @@
 package com.example.blazetest.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +40,7 @@ public class ProductService {
     if(product.getId() == null){
       product.setId(sequenceGenerator.generateSequence(Product.SEQUENCE_NAME));
     }
+    // product.setCost(product.getUnitPrice()*product.getQuantity());
     return productRepository.save(product);
   }
 

@@ -1,14 +1,17 @@
 package com.example.blazetest.models;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import com.example.blazetest.utils.Utils;
+import com.mongodb.lang.NonNull;
 
 @Document(collection = "orders")
 public class Order {
@@ -20,9 +23,13 @@ public class Order {
   private Long id;
   @Indexed(direction = IndexDirection.ASCENDING)
   private String status; 
-  private Date createdAt; 
+  private Date createdAt= new Date();
+  @NonNull
   private String customer;
-  private List<Product> products;
+  
+  //@DBRef(lazy = true)
+  // @DBRef
+  private Set<Product> products = new HashSet<>();
 
   private Double subtotal=0.0;
   private Double subtotalAux=0.0;
@@ -35,7 +42,13 @@ public class Order {
 
   public Order(){}
 
-  public Order(String status, Date createdAt, String customer, List<Product> products) {
+  // public Order(String status, Date createdAt, String customer) {
+  //   this.status = status;
+  //   this.createdAt = createdAt;
+  //   this.customer = customer;
+  // }
+  
+  public Order(String status, Date createdAt, String customer, Set<Product> products) {
     this.status = status;
     this.createdAt = createdAt;
     this.customer = customer;
@@ -74,18 +87,18 @@ public class Order {
     this.customer = customer;
   }
 
-  public List<Product> getProducts() {
+  public Set<Product> getProducts() {
     return products;
   }
 
-  public void setProducts(List<Product> products) {
+  public void setProducts(Set<Product> products) {
     this.products = products;
   }
 
   public Double getSubtotal() {
     //Double subtotal = 0.0;
     for (Product product : this.products) {
-      this.subtotal += product.getUnitPrice();
+      this.subtotal += product.getUnitPrice()*product.getQuantity();
     }
     return this.subtotal;
   }
