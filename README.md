@@ -2,9 +2,9 @@
 
 This is a test project to create and edit orders and products. An order includes a list of items. Each order item has a product and a quantity which will be used to calculate the order total amount.
 
-[BLAZE API](https://blazetest-cris.herokuapp.com/api/products/pageable?page=0&size=2)
-
 ## API products
+
+[/api/products/pageable?page=0&size=2](https://blazetest-cris.herokuapp.com/api/products/pageable?page=0&size=2)
 
 In order to create, edit, or list products you can find the nexts endpoints:
 
@@ -21,16 +21,17 @@ In order to create, edit, or list products you can find the nexts endpoints:
 
 You **dont need** to pass an id with in Json body.
 
-`{ "name": "Galap", "category": "Cookies", "unitPrice": "1.00", "isActive": true }`
+`{ "name": "Sweet Cake", "category": "Cakes", "unitPrice": 1.20, "isActive": true, "quantity": 10 }`
 
 ### Example to edit a product
 
 You **must pass** an id with in Json body.
 
-`{ "id":"1", "name": "Galap", "category": "Cookies", "unitPrice": "1.00", "isActive": true }`
+`{ "id": 1, "name": "Sweet Cake", "category": "Cakes", "unitPrice": 1.20, "isActive": true, "quantity": 10 }`
 
 ## API orders
 
+[/api/orders/pageable?page=0&size=2](https://blazetest-cris.herokuapp.com/api/products/pageable?page=0&size=2)
 In order to create, edit, or list orders you can find the nexts endpoints:
 
 | #   | description             | endpoint                             | verb HTTP |
@@ -44,12 +45,12 @@ In order to create, edit, or list orders you can find the nexts endpoints:
 
 ### Example to save an order
 
-You **dont need** to pass an id with in Json body.
+You **dont need** to pass an id inside Json body.
 
-`{ "status": "Completed", "createdAt": "2021-08-05", "customer": "Josep Evans", "products": [ { "id": 8, "name": "Galapagitos", "category": "Cookies", "unitPrice": 1.2, "isActive": true }, { "id": 10, "name": "Galap", "category": "Cookies", "unitPrice": 1.0, "isActive": true } ] }`
+`{ "status": "Completed", "customer": "Clen Eastwood", "products": [ { "id": 3, "name": "Ritz", "category": "Cookies", "unitPrice": 1.8, "isActive": true, "quantity": 2 }, { "id": 4, "name": "Chocake", "category": "Cakes", "unitPrice": 4.8, "isActive": true, "quantity": 3 } ] }`
 
 ### Example to edit an order
 
-You **must pass** an id with in Json body.
+You **must pass** an id inside Json body.
 
-`{ "id": 3, "status": "Completed", "createdAt": "2021-08-05", "customer": "Thomas Muller", "products": [ { "id": 1, "name": "Choko", "category": "Cookies", "unitPrice": 0.8, "isActive": true }, { "id": 4, "name": "Redbull", "category": "Drinks", "unitPrice": 3.5, "isActive": true }, { "id": 5, "name": "V220", "category": "Drinks", "unitPrice": 2.5, "isActive": true } ] }`
+`{ "id": 2,"status": "Completed", "customer": "Clen Eastwood", "products": [ { "id": 3, "name": "Ritz", "category": "Cookies", "unitPrice": 1.8, "isActive": true, "quantity": 2 }, { "id": 4, "name": "Chocake", "category": "Cakes", "unitPrice": 4.8, "isActive": true, "quantity": 3 } ] }`
