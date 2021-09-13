@@ -48,11 +48,12 @@ public class Order {
   //   this.customer = customer;
   // }
   
-  public Order(String status, Date createdAt, String customer, Set<Product> products) {
+  public Order(String status, Date createdAt, String customer, Set<Product> products, Double subtotal) {
     this.status = status;
     this.createdAt = createdAt;
     this.customer = customer;
     this.products = products;
+    this.subtotal = subtotal;
   }
 
   public Long getId() {
@@ -96,7 +97,7 @@ public class Order {
   }
 
   public Double getSubtotal() {
-    //Double subtotal = 0.0;
+    this.subtotal = 0.0;
     for (Product product : this.products) {
       this.subtotal += product.getUnitPrice()*product.getQuantity();
     }

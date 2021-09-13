@@ -19,35 +19,34 @@ public class OrderService {
   @Autowired
   SequenceGeneratorService sequenceGenerator;
 
-  public List<Order> getOrders(){
+  public List<Order> getOrders() {
     return orderRepository.findAll();
   }
 
-  public Optional<Order> getById(Long id){
+  public Optional<Order> getById(Long id) {
     return orderRepository.findById(id);
   }
 
-  public Page<Order> getOrdersPageable(int page, int size){
-    Pageable requestPage = PageRequest.of(page,size);
-    Page<Order> orders = orderRepository.findAll(requestPage);
-    return orders;
+  public Page<Order> getOrdersPageable(int page, int size) {
+    Pageable requestPage = PageRequest.of(page, size);
+    return orderRepository.findAll(requestPage);
   }
-  public Order saveOrder(Order order){
-    if(order.getId() == null){
+
+  public Order saveOrder(Order order) {
+    if (order.getId() == null) {
       order.setId(sequenceGenerator.generateSequence(Order.SEQUENCE_NAME));
     }
-    // System.out.println("Order Propducts: "+order.getProducts().size());   
-    //order.setProducts(Arrays.asList(order.getProducts().toArray());
+
     return orderRepository.save(order);
   }
 
-  public boolean deleteById(Long id){
-    Optional<Order> orderOptional =orderRepository.findById(id);
-    try {     
-      if(orderOptional.isPresent()){
+  public boolean deleteById(Long id) {
+    Optional<Order> orderOptional = orderRepository.findById(id);
+    try {
+      if (orderOptional.isPresent()) {
         orderRepository.deleteById(id);
         return true;
-      }else{
+      } else {
         return false;
       }
     } catch (Exception e) {

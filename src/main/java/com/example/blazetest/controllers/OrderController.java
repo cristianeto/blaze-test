@@ -39,8 +39,7 @@ public class OrderController {
   @GetMapping("/pageable")
   public Page<Order> retrieveOrderWithPaging(@Param(value = "page") int page, 
                                               @Param(value = "size") int size){
-    Page<Order> orders =orderService.getOrdersPageable(page, size);
-    return orders;
+    return orderService.getOrdersPageable(page, size);
   }
   @PostMapping()
   public Order saveOrder(@RequestBody Order order){
@@ -50,10 +49,8 @@ public class OrderController {
   @DeleteMapping(path = "/{id}")
   public String deleteOrderById(@PathVariable("id") Long id){    
     boolean orderDeleted = orderService.deleteById(id);
-    if(orderDeleted) {
-      return "Order id: " + id + " was deleted";
-    }else{
-      return "Order id: " + id + " was not deleted or doesn't exist!";
-    }
+    if(orderDeleted) return "Order id: " + id + " was deleted";
+
+    return "Order id: " + id + " was not deleted or doesn't exist!";
   }
 }
